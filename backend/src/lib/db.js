@@ -8,4 +8,3 @@ export const connectDB = () => {
     process.exit(1);
   }
 };
-console.log(process.env.MONGODB_URL);
