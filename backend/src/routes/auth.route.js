@@ -6,11 +6,11 @@ import {
   updateProfile,
 } from "../controllers/auth.controller.js";
 import { protectedRoute } from "../middlewares/auth.middleware.js";
-import { arjectProjection } from "../middlewares/arcjet.middleware.js";
+// import { arjectProjection } from "../middlewares/arcjet.middleware.js";
 
 const router = express.Router();
 
-router.use(arjectProjection);
+// router.use(arjectProjection);
 
 router.post("/signup", signup);
 router.post("/login", login);
