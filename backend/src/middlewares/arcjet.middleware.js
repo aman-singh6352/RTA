@@ -1,7 +1,7 @@
 import { isSpoofedBot } from "@arcjet/inspect";
 import aj from "../lib/arcjet.js";
 
-export const arjectProjection = async (req, res, next) => {
+export const arcjetProtection = async (req, res, next) => {
     try {
         const decision = await aj.protect(req);
         if (decision.reason.isRateLimit()) {
