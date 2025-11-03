@@ -86,7 +86,7 @@ export const getChatPartners = async (req, res) => {
           .filter((id) => id !== null)
       ),
     ];
-    chatPartners.push(loggedInUserId.toString()); // to yourself
+    chatPartners.push(loggedInUserId.toString()); // message to yourself
     const chatPartners = await User.find({
       _id: { $in: chatPartnerIds },
     }).select("-password");
