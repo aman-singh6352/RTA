@@ -7,9 +7,9 @@ import {
   getChatPartners,
 } from "../controllers/message.controller.js";
 import { protectedRoute } from "../middlewares/auth.middleware.js";
-import { arcjetProtection } from "../middlewares/arcjet.middleware.js";
+// import { arcjetProtection } from "../middlewares/arcjet.middleware.js";
 
-router.use(arcjetProtection, protectedRoute);
+router.use(protectedRoute);
 
 router.get("/contacts", getAllContacts);
 router.get("/chats", getChatPartners);

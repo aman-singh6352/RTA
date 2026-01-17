@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
+import { useAuthStore } from "../store/useAuthStore.js";
+import { axiosInstance } from "../lib/axios.js";
 
 function LoginPage() {
-  return (
-    <div>LoginPage</div>
-  )
+  return <div>Login Page</div>;
 }
 
-export default LoginPage
+export default LoginPage;
