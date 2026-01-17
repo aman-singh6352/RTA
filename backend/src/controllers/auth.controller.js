@@ -62,7 +62,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "Invalid credentials!" });
-    // never tell the client which one is incorrect
+    
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials!" });
@@ -71,7 +71,6 @@ export const login = async (req, res) => {
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
-      profilePic: user.profilePic,
     });
   } catch (err) {
     console.log("Error in the :: login controller:", err.message);
