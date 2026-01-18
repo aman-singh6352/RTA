@@ -1,6 +1,7 @@
 import Message from "../models/Message.js";
 import User from "../models/User.js";
 import cloudinary from "cloudinary";
+import { getReceiverSocketId, io } from "../lib/socket.js";
 
 export const getAllContacts = async (req, res) => {
   try {
@@ -66,6 +67,7 @@ export const getChatPartners = async (req, res) => {
     const messages = await Message.find({
       $or: [{ senderId: loggedInUserId }, { receiverId: loggedInUserId }],
     });
+      
     const chatPartnerIds = [
       ...new Set(
         messages
@@ -90,6 +92,7 @@ export const getChatPartners = async (req, res) => {
     const chatPartners = await User.find({
       _id: { $in: chatPartnerIds },
     }).select("-password");
+    console.log(chatPartners);
     return res.status(200).json(chatPartners);
   } catch (err) {
     console.log("Error in the getChatPartner controller ::", err.message);
