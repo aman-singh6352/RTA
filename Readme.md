@@ -41,4 +41,4 @@ A real-time chat application that allows users to send and receive messages inst
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/aman-singh6352/RTA.git
