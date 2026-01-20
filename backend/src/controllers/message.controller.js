@@ -39,7 +39,7 @@ export const sendMessage = async (req, res) => {
     const receiverId = req.params.id;
     const senderId = req.user._id;
     
-    if (!text || !image)
+    if (!text && !image)
       return res.status(400).json({ message: "Text or image is required!" });
 
     let imageUrl = "";
@@ -88,11 +88,10 @@ export const getChatPartners = async (req, res) => {
           .filter((id) => id !== null)
       ),
     ];
-    chatPartners.push(loggedInUserId.toString()); // message to yourself
+    // chatPartnerIds.push(loggedInUserId.toString()); // message to yourself
     const chatPartners = await User.find({
       _id: { $in: chatPartnerIds },
     }).select("-password");
-    console.log(chatPartners);
     return res.status(200).json(chatPartners);
   } catch (err) {
     console.log("Error in the getChatPartner controller ::", err.message);
